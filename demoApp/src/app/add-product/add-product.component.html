@@ -1,0 +1,54 @@
+<div class="container">
+		<div class="form-bg" *ngIf="mode == 'create'">
+			<form [formGroup]="addProductForm" (ngSubmit)="addProduct(addProductForm)" class="form-horizontal">
+				<h5 class="text-center">Add New Student</h5><br>
+				<div class="form-group">
+					<input type="text" formControlName="firstName" placeholder="First Name">
+				</div>
+				<div class="form-group">
+					<input type="text" formControlName="lastName" placeholder="Last Name">
+        </div>
+        <div class="form-group">
+					<input type="email" formControlName="email" placeholder="Email">
+        </div>
+        <div class="form-group">
+          <input type="number" formControlName="phone" placeholder="Phone Number">
+
+				</div>
+        <div class="form-group">
+          <select id="status" name="status" formControlName="status" style="width: 50%; margin-left: 20%;">
+            <option value="active">active</option>
+            <option value="inactive">inactive</option>
+          </select>
+        </div>
+				<br>
+				<div class="align-center">
+					<input type="submit" value="Add Student" [disabled]="!addProductForm.valid" class="btn btn-primary">
+				</div>
+			</form>
+  </div>
+  <div class="form-bg" *ngIf="mode == 'edit'">
+    <form [formGroup]="addProductForm" (ngSubmit)="editStudent(addProductForm)" class="form-horizontal">
+      <h5 class="text-center">Edit Student</h5><br>
+      <div class="form-group">
+        <input type="text" formControlName="firstName" placeholder="First Name" value={{studentForEdit.firstName}}>
+      </div>
+      <div class="form-group">
+        <input type="text" formControlName="lastName" placeholder="Last Name" value={{studentForEdit.lastName}}>
+      </div>
+      <div class="form-group">
+        <input type="text" formControlName="email" placeholder="Email" value={{studentForEdit.email}}>
+      </div>
+      <div class="form-group">
+        <input type="number" formControlName="phone" placeholder="Phone Number" value={{studentForEdit.phone}}>
+      </div>
+      <div class="form-group">
+        <input type="text" formControlName="status" placeholder="Status" value={{studentForEdit.status}}>
+      </div>
+      <br>
+      <div class="align-center">
+        <input type="submit" value="Edit Student" [disabled]="!addProductForm.valid" class="btn btn-primary">
+      </div>
+    </form>
+</div>
+</div>
